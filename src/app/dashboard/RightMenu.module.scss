@@ -66,9 +66,7 @@ $subtitle-color: #a0aec0;
                 /* Каждый пункт меню (li.navItem in RightMenu) */
                 margin-bottom: 16px; /* Отступ между пунктами */
 
-                &.navItemOpen {
-                    // background-color: rgba(255,255,255,0.05);
-                }
+                
 
                 .navLink,
                 .navLinkDropdownToggle {
@@ -127,9 +125,7 @@ $subtitle-color: #a0aec0;
                     max-height: 0; /* Изначально скрываем список, сжимая его по высоте */
                     transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Плавная анимация появления/скрытия */
 
-                    .subNavItem {
-                        /* Можно добавить отступы или другие стили при необходимости */
-                    }
+                    
 
                     .subNavLink {
                         /* Наследуем базовые стили от .navLink, но делаем их чуть менее заметными или сдвинутыми */
