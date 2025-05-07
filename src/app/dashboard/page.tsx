@@ -1,12 +1,10 @@
 import Image from "next/image";
-import Link from "next/link";
+import RightMenu from "@/components/rightMenu";
 
 export default function Home() {
   return (
     <div>
-      <h1>Hello World</h1>
-      <Link href="/dashboard">Dashboard</Link>
+      <RightMenu />
     </div>
-
   );
 }
