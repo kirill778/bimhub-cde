@@ -4,7 +4,7 @@ import type { Configuration as WebpackConfiguration } from 'webpack'; // Имп�
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  // ... другие ваши существующие опции ...
+ // devIndicators: false, // Добавляем опцию devIndicators
 
   webpack(config: WebpackConfiguration, { isServer, defaultLoaders }) {
     // Добавляем правило для SVG

@@ -1,0 +1,201 @@
+/* src/components/dashboard/RightMenu.module.css */
+$sidebar-bg: #1A365D;
+$sidebar-color: #fff;
+$sidebar-width: 280px;
+$sidebar-padding: 25px 20px;
+$nav-link-color: #e2e8f0;
+$nav-link-hover-bg: #2b4c7e;
+$nav-link-active-bg: #375a8a;
+$nav-link-active-color: #fff;
+$icon-size: 32px;
+$subnav-link-color: #cdd5e0;
+$border-color: #2b4c7e;
+$subtitle-color: #a0aec0;
+
+.sidebar {
+    /* Контейнер всего сайдбара (aside в RightMenu) */
+    background-color: $sidebar-bg; /* Примерный темно-синий цвет */
+    color: $sidebar-color;
+    width: $sidebar-width; /* Ширина сайдбара */
+    height: 100vh; /* На всю высоту экрана */
+    display: flex;
+    flex-direction: column;
+    padding: $sidebar-padding;
+    box-sizing: border-box;
+    overflow-y: auto; /* Если контента много */
+
+    .logoSection {
+        /* Секция с логотипом и подзаголовком (div.logoSection in RightMenu) */
+        text-align: left; /* На скриншоте текст логотипа слева */
+        margin-bottom: 30px;
+        padding-left: 10px; /* Небольшой отступ для логотипа */
+
+        .logoTitle {
+            /* Сам логотип — надпись BIM-HUB (h1.logoTitle in RightMenu) */
+            font-family: var(--font-bebas-neue), sans-serif;
+            font-size: 44px;
+            font-weight: 400;
+            margin: 30px 0px 0px 40px;
+            color: $sidebar-color;
+            height: min-content;
+            line-height: 0.5;
+            padding: 0;
+            display: block;
+        }
+
+        .logoSubtitle {
+            /* Подзаголовок под логотипом — "Центр управления проектами" (p.logoSubtitle in RightMenu) */
+            font-size: 10.5px;
+            color: $subtitle-color; /* Светло-серый для подзаголовка */
+            margin: 9px 0px 0px 28px;
+        }
+    }
+
+    .nav {
+        /* Контейнер для навигационного меню (nav.nav in RightMenu) */
+        flex-grow: 0.97;
+        margin: 40px 0px 0px 25px; /* Занимает все доступное пространство между лого и футером */
+
+        .navList {
+            /* Список пунктов меню (ul.navList in RightMenu) */
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            .navItem {
+                /* Каждый пункт меню (li.navItem in RightMenu) */
+                margin-bottom: 16px; /* Отступ между пунктами */
+
+                &.navItemOpen {
+                    // background-color: rgba(255,255,255,0.05);
+                }
+
+                .navLink,
+                .navLinkDropdownToggle {
+                    /* Ссылка внутри пункта меню (Link.navLink in RightMenu) */
+                    display: flex;
+                    align-items: center;
+                    padding: 12px 15px;
+                    color: $nav-link-color; /* Чуть менее яркий белый для неактивных ссылок */
+                    text-decoration: none;
+                    border-radius: 6px;
+                    transition: background-color 0.2s, color 0.2s;
+                    font-size: 15px;
+                    background: none;
+                    border: none;
+                    width: 100%;
+                    cursor: pointer;
+                    text-align: left;
+                    font: inherit;
+
+                    &:hover {
+                        background-color: $nav-link-hover-bg; /* Цвет фона при наведении */
+                        color: $nav-link-active-color;
+                    }
+
+                    &.active {
+                        background-color: $nav-link-active-bg; /* Цвет фона для активной ссылки */
+                        color: $nav-link-active-color;
+                        font-weight: 500;
+                    }
+                }
+
+                .navLinkDropdownToggle {
+                   
+                    margin: 0;
+                    padding: 12px 15px;
+                }
+
+                .dropdownArrow {
+                    margin-left: 8px; /* Небольшой отступ от текста */
+                    transition: transform 0.5s; /* Плавный поворот */
+                    display: inline-block; /* Чтобы transform работал */
+                    font-size: 1.1em; /* Чуть больше, чтобы было видно */
+                    line-height: 1; /* Чтобы не влияла на высоту строки */
+                    transform: rotate(90deg);
+
+                    &.open {
+                        transform: rotate(270deg);
+                    }
+                }
+
+                .subNavList {
+                    list-style: none; /* Убираем маркеры списка */
+                    padding-left: 0; /* Убираем отступ слева по умолчанию */
+                    margin: 8px 0 8px 20px; /* Отступ слева для визуальной вложенности */
+                    overflow: hidden; /* Важно для анимации max-height */
+                    max-height: 0; /* Изначально скрываем список, сжимая его по высоте */
+                    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Плавная анимация появления/скрытия */
+
+                    .subNavItem {
+                        /* Можно добавить отступы или другие стили при необходимости */
+                    }
+
+                    .subNavLink {
+                        /* Наследуем базовые стили от .navLink, но делаем их чуть менее заметными или сдвинутыми */
+                        display: block; /* Чтобы занимали всю ширину */
+                        padding: 8px 15px 8px 25px; /* Увеличиваем левый отступ для вложенности */
+                        font-size: 14px; /* Чуть меньше шрифт */
+                        color: $subnav-link-color; /* Чуть более тусклый цвет */
+                        border-radius: 4px;
+                        text-decoration: none;
+                        transition: background-color 0.2s, color 0.2s;
+
+                        &:hover {
+                            background-color: $nav-link-hover-bg;
+                            color: $nav-link-active-color;
+                        }
+
+                        &.active {
+                            color: $nav-link-active-color;
+                            font-weight: 500;
+                            /* background-color: #375a8a; */ /* Можно и фон менять, если хотите */
+                        }
+                    }
+                }
+
+                &.navItemOpen .subNavList,
+                .navLinkDropdownToggle.open + .subNavList {
+                    max-height: 500px; /* Достаточно большая высота, чтобы вместить все подпункты. Подберите по факту. */
+                }
+                /* Если вы используете isProjectsSubMenuOpen в JSX для условного рендеринга ul, то эта часть с .navItemOpen или .navLinkDropdownToggle.open + .subNavList не так критична для показа, но может быть полезна для анимации, если вы решите не удалять ul из DOM, а просто скрывать его через CSS */
+            }
+        }
+    }
+
+    .iconWrapper {
+        /* Контейнер для иконки слева от текста пункта меню (span.iconWrapper in RightMenu) */
+        margin-top: -5px;
+        margin-right: 15px;
+        display: flex; /* Для лучшего контроля над иконкой */
+        align-items: center;
+        min-width: 24px; /* Чтобы текст не скакал, если иконки разной ширины */
+    }
+
+    .icon {
+        /* Класс для SVG-иконок меню (применяется к импортированным SVG-компонентам в menuItems) */
+        width: $icon-size;
+        height: $icon-size;
+    }
+
+    .supportSection {
+        /* Секция поддержки внизу сайдбара (div.supportSection in RightMenu) */
+        border-top: 1px solid $border-color; /* Разделительная линия */
+        text-align: center;
+
+        .supportTitle {
+            /* Заголовок блока поддержки — "Техническая поддержка" (p.supportTitle in RightMenu) */
+            font-size: 12px;
+            font-weight: 500;
+            margin: 30px 0 5px 0;
+            color: $sidebar-color;
+        }
+
+        .supportHours {
+            /* Время работы поддержки (p.supportHours in RightMenu) */
+            font-size: 10px;
+            color: $subtitle-color;
+            margin: 0;
+        }
+    }
+}
